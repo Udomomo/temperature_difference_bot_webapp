@@ -1,21 +1,16 @@
 from forecastiopy import *
-
+import os
 
 #fetch Tokyo's weather forecast from Dark Sky
 def fetch_forecast_data():
-    apikey = "08c19e7bfc9504e9c4f8db40bf1d9605"
-    Tokyo = [35.689781, 139.762202]
+    apikey = os.environ["DARKSKY_APIKEY"]
+    location = [35.689781, 139.762202]
 
     forecast_data = ForecastIO.ForecastIO(apikey,
                             units=ForecastIO.ForecastIO.UNITS_SI,
                             lang=ForecastIO.ForecastIO.LANG_ENGLISH,
-                            latitude=Tokyo[0], longitude=Tokyo[1])
+                            latitude=location[0], longitude=location[1])
 
-    '''for debug
-    print('Latitude', forecast_data.latitude, 'Lengitude', forecast_data.longitude)
-    print('Timezone', forecast_data.timezone, 'Offset', forecast_data.offset)
-    print(forecast_data.get_url()) # You might want to see the request url
-    '''
     return forecast_data
 
 #extract the temperature from the data
@@ -33,5 +28,4 @@ def extract_temperature():
         return(temperatureData)
     else:
         return('No Daily data')
-
 
