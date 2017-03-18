@@ -8,9 +8,7 @@ from decimal import *
 from fetch_temperature import extract_temperature
 
 #validate data existence
-#data = extract_temperature()
-
-data = [{'temperatureMin': '5.2', 'time': '1489762800', 'temperatureMax': '14.89'}, {'temperatureMin': '4.39', 'time': '1489849200', 'temperatureMax': '17.89'}]
+data = extract_temperature()
 
 if data == "No Daily data":
     sys.exit() 
