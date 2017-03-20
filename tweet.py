@@ -70,5 +70,5 @@ def make_tweet():
     else:
         sys.exit()
 
-#make_tweet()
+make_tweet()
 
