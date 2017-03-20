@@ -1,7 +1,7 @@
 from forecastiopy import *
 import os
 
-#fetch Tokyo's weather forecast from Dark Sky
+#fetch weather forecast raw data from Dark Sky
 def fetch_forecast_data():
     apikey = os.environ["DARKSKY_APIKEY"]
     location = [35.689781, 139.762202]
@@ -16,16 +16,18 @@ def fetch_forecast_data():
 #extract the temperature from the data
 def extract_temperature():
     fio = fetch_forecast_data()
-    temperatureData=[]
-    if fio.has_daily() is True:
-        daily = FIODaily.FIODaily(fio)
-        outputKey = ["time", "temperatureMax", "temperatureMin"]
-        for day in range(2):
-            dailyTemperature = {}
-            for item in outputKey:
-                dailyTemperature[item] = str(daily.get_day(day+1)[item]) # daily.get_day(day) fetches ['daily'] ['data'][day-1]
-            temperatureData.append(dailyTemperature)
-        return(temperatureData)
-    else:
+
+    if fio.has_daily() is False:
         return('No Daily data')
+
+    daily = FIODaily.FIODaily(fio)
+    outputKey = ["time", "temperatureMax", "temperatureMin"]
+    temperature_data=[]
+    for day in range(2):
+        daily_temperature = {}
+        for item in outputKey:
+            daily_temperature[item] = str(daily.get_day(day+1)[item]) 
+            # daily.get_day(day) fetches ['daily'] ['data'][day-1]
+        temperature_data.append(daily_temperature)
+    return(temperature_data)
 
