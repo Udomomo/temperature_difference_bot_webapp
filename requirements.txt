@@ -1,4 +1,4 @@
-future==0.15.2
+future==0.18.2
 oauthlib==1.1.2
 tweepy==3.5.0
 requests==2.10.0
