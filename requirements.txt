@@ -1,6 +1,6 @@
 future==0.15.2
 oauthlib==1.1.2
-tweepy==3.5.0
+tweepy==3.10.0
 requests==2.10.0
 requests-oauthlib==0.6.2
 git+https://github.com/bitpixdigital/forecastiopy3.git
